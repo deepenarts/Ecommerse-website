@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block title %}{{product.title}}{% endblock title %}
+
+{% block content %}
+
+
+<div class= "container">
+    <div class ="row">
+        <div class = "col-md-5">
+            <a href="{{product.image.url}}" target="_blank"> <img src="{{product.image.url}}" alt= "", class="img-fluid card"> </a>
+            <div class= "row">
+                {%for pi in product.productimage_set.all %}
+                <div class="col-md-4 p-3">
+                    <a href="{{pi.image.url}}" target="_blank"> <img src="{{pi.image.url}}" class="img-fluid" style= "height:100px; object-fit:contain;" alt=""> </a>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class = "col-md-7">
+            <h2 class="font-weight-bold">{{product.title}}</h2>
+            <small class="label-rating text-muted">{{product.view_count}} viewed</small>
+            <small class="label-rating text-success"> <i class="fa fa-clipboard-check"></i> 8 orders </small>
+            <div class="mb-3">  
+                <span class="text-muted"> <strike>Rs.{{product.marked_price}}</strike> Rs. {{product.selling_price}}.00 /per piece</span> 
+            </div>
+            <p>{{product.description}}</p>    
+            <dl class="row">
+                <dt class="col-sm-3">Category</dt>
+                <dd class="col-sm-9">{{product.Category}}</dd>
+                
+                <dt class="col-sm-3">Warrenty</dt>
+                <dd class="col-sm-9">{{product.warrenty}}</dd>
+                
+                <dt class="col-sm-3">Return Policy</dt>
+                <dd class="col-sm-9">{{product.return_policy}} </dd>
+            </dl>
+            <a href="{% url 'ecomapp:addtocart' product.id %}" class="btn  btn-outline-primary"> <span class="text">Add to cart</span> <i class="fas fa-shopping-cart"></i>  </a>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+    body {
+        background-color: #ffcb0085; 
+    }
+    .btn-outline-primary {
+        color: #f1ecec;
+        border-color: #af00ff;
+        background-color: #9700ff;
+    }
+    
+    p {
+    margin-top: 2px;
+    margin-bottom: 1rem;
+    color: #79178e;
+    font-family: f;
+    }
+    .col-md-5 {
+        background-color: #83daee; 
+    }
+    .col-md-7 {
+        background-color: wheat;
+    }
+    .row {
+        background-color: #dbd7c6;
+    }
+    .h2, h2 {
+        color: #660b47;
+        font-family: f;
+    }
+    .small, small {
+        font-size: 94%;
+    }
+</style>
+
+{% endblock content %}

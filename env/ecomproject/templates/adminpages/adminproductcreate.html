@@ -1,0 +1,43 @@
+{% extends "adminpages/adminbase.html" %}
+{% block title %}Add New Product{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto card">
+            <h3 class="text-center">Add new products </h3>
+            <form class="card mx-2" action="" method="POST" enctype="multipart/form-data" class="dropzone" id="my-dropzone">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-info">Submit Data </button>
+            </form>              
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<style>
+    body {
+        background-color: #ffcb0085; 
+    }
+    .col-md-8 {
+        background-color: wheat;
+        margin: auto;
+        margin-top:30px;
+    }
+    .card {
+        background-color: #83daee;
+        margin-top: 30px;
+    }
+    h3 {
+        font-family: f;
+        color: #860b0b;
+    }
+    
+</style>
+
+{% endblock content %}

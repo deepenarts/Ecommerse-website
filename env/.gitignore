@@ -1,0 +1,12 @@
+# created by virtualenv automatically
+
+# .gitignore
+
+# Virtual environment
+env/
+
+# Other entries specific to your project
+# ...
+
+# Exclude any other files or directories you want to ignore
+

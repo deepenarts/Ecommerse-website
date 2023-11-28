@@ -1,0 +1,66 @@
+{% extends "adminpages/adminbase.html" %}
+{% block title %}All orders{% endblock title %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class= "col-md-8 mx-auto card">
+            <h3>All Orders </h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>SN </th>
+                        <th>Order ID</th>
+                        <th>Customer </th>
+                        <th>Ordered On </th>
+                        <th>Amount </th>
+                        <th>Status </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {%for order in allorders%}
+                    <tr>
+                        <td>{{forloop.counter}}</td>
+                        <td><a href="{% url 'ecomapp:adminorderdetail' order.id %}">#ORDER_{{order.id}}</a> </td>
+                        <td>{{order.ordered_by}}</td>
+                        <td>{{order.created_at}}</td>
+                        <td>{{order.total}}</td>
+                        <td>{{order.order_status}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+<style>
+    body {
+        background-color: #ffcb0085; 
+    }
+    .col-md-8 {
+        background-color: wheat;
+        margin: auto;
+        margin-top:30px;
+    }
+    h3 {
+        font-family: f;
+        color: #860b0b;
+    }
+    table {
+        border-collapse: collapse;
+        background-color: azure;
+    }
+    .card {
+        background-color: #83daee;
+        margin-top: 30px;
+    }
+</style>
+
+{% endblock content %}

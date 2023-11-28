@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block title %}Login{% endblock title %}
+
+{% block content %}
+
+<div class = "container">
+    <div class= "row">
+        <div class= "col-md-6 mx-auto card">
+            <h3 class="text-center">Customer Login Form </h3> <hr>
+            <form class="text-center" action="" method = "POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary">Login as a customer </button>
+                {% if error %}
+                <li style="color:red;">{{error}} </li>
+                {% endif %}
+            </form>
+            <p class="text-center">Forgot Password? <a href= "{% url 'ecomapp:passwordforgot'%}"> Reset now </a> </p>
+            <p class="text-center">Don't have an account? <a href="{% url 'ecomapp:customerregistration' %}{% if request.GET.next %}?next={{request.GET.next}}{% endif %}">Register here</a></p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    body {
+        background-color: #ffcb0085; 
+    }
+    .errorlist{
+        color: red;
+    }
+    .card {
+        background-color: #83daee;
+        margin-top: 30px;
+
+    }
+    
+</style>
+{% endblock content%}

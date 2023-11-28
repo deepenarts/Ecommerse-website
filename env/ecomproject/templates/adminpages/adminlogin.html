@@ -1,0 +1,44 @@
+{% extends "adminpages/adminbase.html" %}
+{% block title %}Admin Login{% endblock title %}
+
+{% block content %}
+
+<div class = "container">
+    <div class= "row">
+        <div class= "col-md-4 mx-auto card">
+            <h3 class="text-center">Admin Login Form </h3>
+            <form class="text-center m-3" action="" method = "POST">
+                {% csrf_token %}
+                {{form.as_p}}
+                <button class="btn btn-primary center">Login as a Admin </button>
+                {% if error %}
+                <li style="color:red;">{{error}} </li>
+                {% endif %}
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    body {
+        background-color: #ffcb0085; 
+    }
+    .errorlist{
+        color: red;
+    }
+    .card {
+        background-color: #83daee;
+        margin-top: 30px;
+    }
+    h3 {
+        font-family: f;
+        color: #860b0b;
+    }
+    
+</style>
+
+{% endblock content%}
